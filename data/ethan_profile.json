@@ -1,0 +1,187 @@
+{
+  "universe": "Iron RPG / Barbell Legends",
+  "bookmark": {
+    "app_idea": {
+      "name": "Iron Legends",
+      "description": "A vibe-coded app combining historical lifting milestones with an RPG-style Barbell progression system.",
+      "core_modes": [
+        "Historical Milestones (match real lifters, real eras)",
+        "Barbell RPG (classes, skill trees, quests, relics)"
+      ],
+      "future_features": [
+        "Skill tree UI",
+        "Character sheets",
+        "Quest tracking",
+        "Lore codex",
+        "PR-based unlocks",
+        "Notion/Sheets sync",
+        "Meet-day boss fights"
+      ]
+    }
+  },
+  "character": {
+    "name": "Ethan",
+    "title": "Saint of the Simple Iron",
+    "class": "Bard of the Barbells",
+    "subclass": "Iron Ascetic",
+    "alignment": "Ritual Neutral Sacred",
+    "archetype": "Lone Liturgist of Iron",
+    "domain": "The Crude Shed Sanctuary",
+    "themes": [
+      "Solitude",
+      "Ritual",
+      "Suffering",
+      "Simplicity",
+      "Legacy",
+      "Sacred and Profane"
+    ]
+  },
+  "backstory": {
+    "summary": "Trains alone at dawn or dusk while his daughter sleeps. A crude shed serves as cathedral. Printed pages of iron legends hang like icons. Music alternates between Korn and silence. He invokes lifters by name like prayers. Both priest and pauper. Mundane and holy.",
+    "canonical_quote": "I am both priest and pauper. I suffer in silence so others may sleep in peace."
+  },
+  "stats": {
+    "might": 16,
+    "tempo": 15,
+    "lore": 18,
+    "resolve": 17,
+    "charisma": 11,
+    "derived": {
+      "hardiness_points": 140,
+      "focus_points": 95,
+      "spirit_points": 120
+    }
+  },
+  "equipment": {
+    "artifacts": [
+      {
+        "name": "Belt of Binding Breath",
+        "rarity": "Rare",
+        "effects": [
+          "+Bracing",
+          "+Confidence",
+          "+Might on heavy lifts"
+        ]
+      },
+      {
+        "name": "Chalk of Quiet Hands",
+        "rarity": "Uncommon",
+        "effects": [
+          "+Grip",
+          "+Ritual activation"
+        ]
+      },
+      {
+        "name": "Printed Icons of the Iron Saints",
+        "rarity": "Epic",
+        "effects": [
+          "Activates Profane Prayer",
+          "+Lore",
+          "+Resolve"
+        ]
+      },
+      {
+        "name": "The Shed Sanctuary",
+        "rarity": "Legendary Zone",
+        "effects": [
+          "+Resolve",
+          "+Might",
+          "+Tempo",
+          "+Focus",
+          "Cold Hardiness"
+        ]
+      }
+    ]
+  },
+  "passives": [
+    "Ritual Praxis",
+    "Liturgical Heat",
+    "Solitude and Steel",
+    "Border Hours (Dawn/Dusk Buffs)",
+    "Sacred Profanity",
+    "Rust & Spirit",
+    "Cold-Forged Will",
+    "Severance of Comfort",
+    "Bar as Burden & Blessing",
+    "Generational Will"
+  ],
+  "abilities": {
+    "signature": {
+      "name": "The Profane Prayer",
+      "effect": "+Resolve +Technique +Might before PR attempt",
+      "cooldown": "Once per PR day"
+    },
+    "actives": [
+      "The Vow of Suffering",
+      "The Silent Descent",
+      "The Deadlift Immolation",
+      "The Liturgy of the Last Rep"
+    ]
+  },
+  "real_world_lifts": {
+    "squat_lb": 319,
+    "bench_lb": 182,
+    "deadlift_lb": 385,
+    "total_lb": 887,
+    "historical_match": "Hepburn Sunnyvale Threshold (1965-inspired)"
+  },
+  "progression": {
+    "ascension_titles": [
+      "Novice of the Shed",
+      "Keeper of Rituals",
+      "Warden of the Border Hours",
+      "Disciple of the Old Saints",
+      "Anchorite of Iron",
+      "Ascetic of the Barbell",
+      "Monk of the Thousand Reps",
+      "Saint of the Simple Iron"
+    ],
+    "lineage_path": [
+      "Hepburn",
+      "Reg Park",
+      "Arnold",
+      "Coan",
+      "Titan",
+      "Mythic"
+    ]
+  },
+  "questline": {
+    "arc_1": {
+      "name": "The Winter of Quiet Resolve",
+      "focus": "Ritual and consistency",
+      "boss": "The Spirit of Fatigue"
+    },
+    "arc_2": {
+      "name": "The Rite of the Old Saints",
+      "focus": "Invoking lineage",
+      "boss": "The Doubt That Crouches Low"
+    },
+    "arc_3": {
+      "name": "The Reg Park Pilgrimage",
+      "focus": "Simple brutal volume",
+      "bosses": [
+        "Cold Bar of Dawn",
+        "Stale Air of the Shed"
+      ]
+    },
+    "arc_4": {
+      "name": "The Arnold Vienna Standard",
+      "focus": "Volume and confidence",
+      "boss": "The Imposter’s Mirror"
+    },
+    "arc_5": {
+      "name": "The Road to Coan",
+      "focus": "Precision meet prep",
+      "boss": "The Ghost of Coan’s Bar Path"
+    },
+    "arc_6": {
+      "name": "The Iron Ascetic’s Trial",
+      "focus": "Meet day",
+      "final_boss": "The Self You Could Have Been"
+    }
+  },
+  "epilogue": {
+    "title": "The Shed Saint",
+    "prophecy": "One day your daughter will see the old shed and know it was a cathedral."
+  }
+}
