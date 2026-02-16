@@ -37,4 +37,3 @@ This repo now includes a workflow at `.github/workflows/deploy-pages.yml` that d
 - `index.html`: Main app shell
 - `styles.css`: Visual style inspired by "shed sanctuary" aesthetics
 - `app.js`: Renders character stats, progression, quests, and milestones dynamically
-- `app.js`: Renders character stats, progression, and quests dynamically

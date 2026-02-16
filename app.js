@@ -16,6 +16,37 @@ const MILESTONE_LADDER = {
   total: [900, 1000, 1100, 1200, 1300],
 };
 
+const HISTORICAL_TIMELINES = {
+  squat: [
+    { lift: 250, era: "1940s", figure: "John Davis", note: "early elite post-war standard" },
+    { lift: 300, era: "1950s", figure: "Doug Hepburn", note: "strength-era benchmark" },
+    { lift: 350, era: "1960s", figure: "Reg Park", note: "iconic old-school threshold" },
+    { lift: 400, era: "1970s", figure: "Franco Columbu", note: "classic power crossover" },
+    { lift: 500, era: "1980s", figure: "Ed Coan", note: "all-time power milestone" },
+  ],
+  bench: [
+    { lift: 150, era: "1940s", figure: "John Davis", note: "early international standard" },
+    { lift: 185, era: "1950s", figure: "Reg Park", note: "strongman-era benchmark" },
+    { lift: 225, era: "1970s", figure: "Arnold", note: "classic two-plate milestone" },
+    { lift: 275, era: "1980s", figure: "Coan-era lifters", note: "serious advanced marker" },
+    { lift: 315, era: "Modern", figure: "Open-class standard", note: "three-plate prestige" },
+  ],
+  deadlift: [
+    { lift: 300, era: "1950s", figure: "Doug Hepburn", note: "vintage strength target" },
+    { lift: 400, era: "1960s", figure: "Reg Park lineage", note: "hard threshold of power" },
+    { lift: 500, era: "1980s", figure: "Ed Coan", note: "hallmark elite jump" },
+    { lift: 600, era: "1990s", figure: "Kirk Karwoski era", note: "serious competitive tier" },
+    { lift: 700, era: "Modern", figure: "High-level open", note: "mythic territory" },
+  ],
+  total: [
+    { lift: 700, era: "1960s", figure: "Hepburn-style totals", note: "old-school strength class" },
+    { lift: 900, era: "1970s", figure: "regional elite", note: "major all-around milestone" },
+    { lift: 1100, era: "1980s", figure: "Coan-era benchmark", note: "competitive platform standard" },
+    { lift: 1300, era: "1990s", figure: "national contender", note: "advanced meet total" },
+    { lift: 1500, era: "Modern", figure: "high-level open", note: "upper competitive tier" },
+  ],
+};
+
 const nextMilestones = (current, ladder, count = 3) => ladder.filter((mark) => mark > current).slice(0, count);
 
 const renderMilestone = (label, current, key) => {
@@ -42,6 +73,89 @@ const renderMilestone = (label, current, key) => {
       </ul>
     </div>
   `;
+};
+
+const timelineRows = (timeline, current) => {
+  const rows = timeline.map((entry) => {
+    const status = entry.lift <= current ? "achieved" : "upcoming";
+    const delta = entry.lift - current;
+
+    return `
+      <div class="timeline-row ${status}">
+        <div>
+          <b>${entry.lift} lb</b>
+          <span class="muted"> · ${entry.era}</span>
+        </div>
+        <div>${entry.figure}</div>
+        <div class="muted">${entry.note}</div>
+        <div>${delta <= 0 ? "✅ Cleared" : `${delta} lb to go`}</div>
+      </div>
+    `;
+  });
+
+  return rows.join("");
+};
+
+const initTimelineTabs = () => {
+  const buttons = Array.from(document.querySelectorAll("[data-timeline-tab]"));
+  const panels = Array.from(document.querySelectorAll("[data-timeline-panel]"));
+
+  const activate = (target) => {
+    buttons.forEach((button) => {
+      const active = button.dataset.timelineTab === target;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-selected", String(active));
+    });
+
+    panels.forEach((panel) => {
+      const active = panel.dataset.timelinePanel === target;
+      panel.hidden = !active;
+    });
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => activate(button.dataset.timelineTab));
+  });
+
+  if (buttons.length) {
+    activate(buttons[0].dataset.timelineTab);
+  }
+};
+
+const renderTimeline = (lifts) => {
+  const tabs = [
+    { key: "squat", label: "Squat", current: lifts.squat_lb },
+    { key: "bench", label: "Bench", current: lifts.bench_lb },
+    { key: "deadlift", label: "Deadlift", current: lifts.deadlift_lb },
+    { key: "total", label: "Total", current: lifts.total_lb },
+  ];
+
+  byId("timeline").innerHTML = `
+    <h2>Historical Milestone Timeline</h2>
+    <p class="muted">Here you are on the timeline: compare your current numbers to iconic era markers.</p>
+    <div class="timeline-tabs" role="tablist" aria-label="Historical timeline views">
+      ${tabs
+        .map(
+          (tab) =>
+            `<button class="tab-btn" type="button" role="tab" data-timeline-tab="${tab.key}" aria-selected="false">${tab.label}</button>`
+        )
+        .join("")}
+    </div>
+    ${tabs
+      .map(
+        (tab) => `
+          <section class="timeline-panel" data-timeline-panel="${tab.key}" role="tabpanel" hidden>
+            <p><b>Current ${tab.label}:</b> ${tab.current} lb</p>
+            <div class="timeline-grid">
+              ${timelineRows(HISTORICAL_TIMELINES[tab.key], tab.current)}
+            </div>
+          </section>
+        `
+      )
+      .join("")}
+  `;
+
+  initTimelineTabs();
 };
 
 const render = (data) => {
@@ -140,6 +254,8 @@ const render = (data) => {
     <p><b>Lineage Path</b></p>
     ${list(data.progression.lineage_path)}
   `;
+
+  renderTimeline(data.real_world_lifts);
 
   byId("future-features").innerHTML = `
     <h2>App Roadmap</h2>
